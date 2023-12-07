@@ -9,35 +9,57 @@ int main()
     // 1  2  *  *  *  *  *  *  2  1
     // 1  *  *  *  *  *  *  *  *  1
     int n = 0;
-    cout << "Enter the no" << endl;
+    cout << "Enter the no 3" << endl;
     cin >> n;
     int row = 1;
+    // 2nd other solution
     while (row <= n)
     {
-        int col = 1;
-        while (col <= n - row + 1)
+        int col = 1, val = 1;
+        while (col <= (n * 2))
         {
-            cout << col << " ";
-            col++;
-        }
-        while (col <= n)
-        {
-            cout << "* ";
-            col++;
-        }
-        int start = 1;
-        while (col > n - row + 2)
-        {
-            col--;
-            cout << "* ";
-        }
-        while (col > 1)
-        {
-            col--;
-            cout << col << " ";
-        }
+            if ((col <= n - row + 1) || (col >= n + row))
+                cout << val << " ";
+            else
+                cout << "* ";
 
+            if (col < n)
+                val++;
+            else if (col > n)
+                val--;
+
+            col++;
+        }
         row++;
         cout << endl;
     }
+
+    // while (row <= n)
+    // {
+    //     int col = 1;
+    //     while (col <= n - row + 1)
+    //     {
+    //         cout << col << " ";
+    //         col++;
+    //     }
+    //     while (col <= n)
+    //     {
+    //         cout << "* ";
+    //         col++;
+    //     }
+    //     int start = 1;
+    //     while (col > n - row + 2)
+    //     {
+    //         col--;
+    //         cout << "* ";
+    //     }
+    //     while (col > 1)
+    //     {
+    //         col--;
+    //         cout << col << " ";
+    //     }
+
+    //     row++;
+    //     cout << endl;
+    // }
 }

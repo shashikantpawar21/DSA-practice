@@ -17,7 +17,7 @@ int main()
         int j = 0;
         while (j < n)
         {
-            // cout << j << " ";  // P1
+            // cout << j << " "; // P1 // setting i,j =1
             cout << n - j << " "; // P2
             j++;
         }

@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Shashi/Desktop/DSA-practice/Lecture-2",
-      "program": "c:/Users/Shashi/Desktop/DSA-practice/Lecture-2/build/Debug/outDebug",
+      "cwd": "c:/Users/Shashi/Desktop/DSA-practice/Lecture-4-patterns",
+      "program": "c:/Users/Shashi/Desktop/DSA-practice/Lecture-4-patterns/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

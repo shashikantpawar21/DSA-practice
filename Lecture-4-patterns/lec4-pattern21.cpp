@@ -19,7 +19,7 @@ int main()
         while (col <= n)
         {
 
-            if (col >= n - row + 1)
+            if (col >= n - row + 1) // Another way (col <= n-row)  --> print " "
             {
                 cout << count << " ";
                 count++;

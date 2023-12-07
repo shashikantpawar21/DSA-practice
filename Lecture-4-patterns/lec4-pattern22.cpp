@@ -17,30 +17,20 @@ int main()
     {
         int col = 1;
         int count = 1;
-        bool decrement = false;
         while (col <= (n * 2) - 1)
         {
 
-            if (col < n - row + 1)
+            if (col <= (n - row) || col >= (n + row))
             {
                 cout << "  ";
             }
             else if (col >= n - row + 1)
             {
                 cout << count << " ";
-                if (count == row && decrement == false)
-                    decrement = true;
-
-                if (decrement)
-                {
-                    if (count == 1)
-                        break;
-                    count--;
-                }
-                else
-                {
+                if (col < n)
                     count++;
-                }
+                else
+                    count--;
             }
             col++;
         }

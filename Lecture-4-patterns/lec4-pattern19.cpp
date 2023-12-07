@@ -8,7 +8,7 @@ int main()
     //   3  3  3
 
     int n = 0;
-    cout << "Enter no" << endl;
+    cout << "Enter no " << endl;
     cin >> n;
     int row = 1;
     while (row <= n)
@@ -16,10 +16,15 @@ int main()
         int col = 1;
         while (col <= n)
         {
-            if (col >= n - row + 1)
-                cout << row << " ";
-            else
+            // if (col >= n - row + 1)
+            //     cout << row << " ";
+            // else
+            //     cout << "  ";
+
+            if (col <= n - row)
                 cout << "  ";
+            else
+                cout << row << " ";
             col++;
         }
         cout << endl;
