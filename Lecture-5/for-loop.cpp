@@ -30,7 +30,7 @@ int main()
         i++;
     }
 
-    for (int a = 1, b = 1; a <= n, b <= n; a++, b++)
+    for (int a = 1, b = 1; a <= n, b <= n; a++, b++) // multiple var, mul condition and increment 
     {
         cout << a << " " << b << endl;
     }

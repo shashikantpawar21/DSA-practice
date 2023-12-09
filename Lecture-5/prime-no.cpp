@@ -9,12 +9,12 @@ int main()
     cin >> n;
     for (int i = 2; i < n; i++)
     {
-        if (n % 2 == 0)
+        if (n % i == 0)
         {
-            cout << "no is not prime";
+            cout << "number is not prime";
             return 0;
         }
         i++;
     }
-    cout << "no is prime";
+    cout << "number is prime";
 }
