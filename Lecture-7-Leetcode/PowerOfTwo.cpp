@@ -9,6 +9,11 @@ int main()
     int n = 0;
     cout << "enter no ";
     cin >> n;
+    if (n <= 0)
+    {
+        cout << "Not a power of 2";
+        return 0;
+    }
     if (n == 1)
     {
         cout << "power of 2";
