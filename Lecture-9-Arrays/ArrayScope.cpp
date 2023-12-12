@@ -27,3 +27,6 @@ int main()
 // Whenever a array is passed to another function, it pass only it base address..
 // the other get the base address and update the value at base address
 // This is the reason, if the value is changed it is changed in main function also
+
+// NOTE -  If you passed to another function , be caution not to update or update intentionally
+// knowing it will be changed in main function too

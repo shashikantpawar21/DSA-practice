@@ -29,7 +29,8 @@ int main()
 
     // array initialisation
     int numberSize = 3;
-    int numbers[numberSize] = {1, 2, 3};
+    int numbers[numberSize] = {1, 2, 3}; // putting var as size is not good practice
+    // better user numbers[100] -- add constant max size value
     cout << endl
          << "print numbers" << endl;
     printArray(numbers, numberSize);
