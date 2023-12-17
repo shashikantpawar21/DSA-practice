@@ -16,9 +16,11 @@ int getPivot(int arr[], int size)
 {
         int start= 0, end = size-1;
         int mid = start + (end-start)/2;
-
+        cout << "{4, 5, 6, 7, 1, 2, 3}" << endl;
         while (start < end)
         {
+            cout << "start mid end " << start << " " << mid << " " << end << endl;
+            cout << "values at ele " << arr[start] << " " << arr[mid]<< " " << arr[end] << endl;
             if(arr[mid] >= arr[0])
             {
                 start = mid+1;
@@ -27,9 +29,11 @@ int getPivot(int arr[], int size)
                 end = mid;
             }
             mid = start + (end -start)/2;
+               cout << "start mid end " << start << " " << mid << " " << end << endl;
+            cout << "values at ele " << arr[start] << " " << arr[mid]<< " " << arr[end] << endl <<endl;
         }
         return start;
-    }
+ }
 
     int main()
     {
@@ -38,4 +42,4 @@ int getPivot(int arr[], int size)
         cout << "Pivot is " << pivot << endl;
 
 
-}
+}                       
