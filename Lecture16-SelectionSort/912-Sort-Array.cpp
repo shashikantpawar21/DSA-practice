@@ -22,18 +22,21 @@ using namespace std;
 
 int main()
 {
-    int nums[] = {5,2,3,1};
+    // int nums[] = {5,2,3,1};
+    int nums[] = {-1,2,-8,-10};
     int size = 4;
    
     for (int i = 0; i < size; i++)
     {
          int minIndex = i;
-        for (int j = i; j < size; j++)
-        {
-            if(nums[j] < nums[i])
-            {
-                minIndex = j;
-            }
+         int min = INT32_MAX;
+         for (int j = i; j < size; j++)
+         {
+             if (nums[j] < nums[i])
+             {
+                 min = nums[j];
+                 minIndex = j;
+             }
         }
         swap(nums[i], nums[minIndex]);
        
