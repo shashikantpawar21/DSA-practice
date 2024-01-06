@@ -70,5 +70,33 @@ int main()
     ptr1 = ptr1 + 1;
     cout << "after ptr1 " << ptr1 << endl;
     // This will give the next element in arr
+
+    // *************CHAR ARRAY AND POINTERS ***********************
+    cout << "Char array implementation" << endl;
+    char ch[6] = "abcde";
+    cout << ch << endl; // This print the whole char arr unlike int arr which return first location address 
+    //  This means cout is implemented differently for both array
+
+    char *c = &ch[0];
+    cout << *c << endl; // This prints first element 
+    cout << c << endl; // This prints whole char array 
+
+    // behind the scene it start printing with first char and print until it get the null pointer
+
+    char ch1 = 'z';
+    char *tempPtr = &ch1;
+    cout << tempPtr << endl;
+    // here output is zabcde this print the char and keep printing until it found null char
+
+    // char ch[6] = "abcde";
+    //  temp memory created and value store --> abcde\0
+    //  memory is created with size and value from temp memory is copied there
+
+    // char *c = "abcde"; This is RISKY AND TO BE AVOIDED 
+    //  temp memory created and value store --> abcde\0
+    //  c pointer is created and address of first element is stored there 
+    // there is chance that temp memory behave unknowningly so avoided
+
+
     
 }
