@@ -16,6 +16,20 @@ class Hero{
         name = new char[100];
         cout << "Constructor called " << endl;
     }
+    
+    // Custom copy constructor written can implement deep copy 
+    //  avoid the shallow copy issue by copy constructor 
+    //  Default copy constructor gets ignored when custom copy constructor is added
+    Hero(Hero& hero)
+    {
+        cout << "custom copy constructor called" << endl;
+        char *ch = new char[strlen(hero.name) + 1];
+        strcpy(ch, hero.name);
+        this->name = ch;
+        this->level = hero.level;
+        this->health = hero.health;
+    }
+
     // getter and setter to  access private varible outside
     int getHealth()
     {
@@ -41,10 +55,6 @@ class Hero{
 
 };
 
-// Note - size of empty class would be 1 byte 
-//  size of other class is sum of size of properties into it 
-//  size may increase considering padding added by compiler for efficient use of memory of class 
-
 int main() {
     
     Hero *batman = new Hero;
@@ -53,22 +63,36 @@ int main() {
     char name[7] = "batman";
     batman->setName(name);
     batman->print();
-    // Copy constructor
 
-    Hero batman1;
-    batman1.setHealth(20);
-    batman1.level = 'A';
-    char name1[8] = "batman1";
-    batman1.setName(name1);
-
-    batman1.print();
-
-    Hero batmanCopy(batman1);
+    // Default Copy constructor
+    // Hero batmanCopy(*batman);
+    Hero *batmanCopy = new Hero(*batman);
+    //  It talkes argument as class instance and copy the value to this instance properties 
     cout << endl << "Batman copy values" << endl;
-    batmanCopy.print();
+    batmanCopy->print();
 
-    Hero *batmanCopy2 = new Hero(batman);
-    cout << endl << "Batman copy 2 values" << endl;
-    batmanCopy2.print();
+    batman->name[0] = 'g';
+
+    cout << "batman name updated value " << batman->name << endl;
+    cout << "batman copy name updated value " << batmanCopy->name << endl;
+   
+    // Default C++ copy constructors perform a shallow copy, copying member variables directly. Shallow copying can lead to issues with classes containing pointers, as it shares the same memory address, causing unintended modifications. To address this, consider providing a custom copy constructor to ensure a deep copy and avoid problems related to shared dynamic memory.
+
+    // After we added our custom copy constructor the issue with name pointer shwoing same value will not happen 
+    // as we deep copy all the value and they have diference space in memory 
+
+    
+
+    Hero *batmanV2 = new Hero;
+    batmanV2->setHealth(20);
+    batmanV2->level = 'B';
+    char name1[10] = "batman V2";
+    batmanV2->setName(name1);
+    batmanV2->print();
+    // **** Copy assingment operator 
+    batman = batmanV2;
+    // Copy values from batman v2 to batman // shallow copy 
+
+    batman->print(); 
 }
 
