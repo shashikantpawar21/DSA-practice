@@ -65,10 +65,11 @@ Node* DeleteHead(Node* head)
     {
         return NULL;
     }
-
-    Node* newHead = head->next;
-    newHead->prev = nullptr;
-    return newHead;
+    Node* prev = head;
+    head = head->next;
+    head->prev = nullptr;
+    delete prev;
+    return head;
 }
 
 // 2. DELETE TAIL
@@ -80,13 +81,15 @@ Node* DeleteTail(Node *head)
 {
     if(head == NULL || head->next == nullptr) return NULL;
 
-    Node* node = head;
-    while(node->next->next != nullptr)
+    Node* tail = head;
+    while(tail->next != nullptr)
     {
-        node = node->next;
+        tail = tail->next;
     }
     
-    node->next = nullptr;
+    Node* prevToTail = tail->prev;
+    prevToTail->next = nullptr;
+    delete tail;
     return head;
 }
 
@@ -101,23 +104,38 @@ Node* DeleteKthElement(Node* head, int k)
 {
     if(head == NULL) return NULL;
     Node* node = head;
-    if(k ==1)
-    {
-        node->next->prev = nullptr;
-        return node->next;
-    }
+
     int count=0;
     while (node)
     {
         ++count;
         if(count ==k)
         {
-            node->prev->next = node->next;
-            node->next->prev = node->prev;
-            return head;
+            break;
         }
         node = node->next;
     }
+    if(count < k) return head;
+    Node* prevNode =  node->prev;
+    Node* nextNode = node->next;
+
+    if(prevNode == NULL && nextNode==NULL)
+    {
+        delete node;
+        return NULL;
+    }
+
+    if(prevNode == NULL)
+       return DeleteHead(node);
+
+    if(nextNode == NULL)    
+      {
+        return DeleteTail(head);
+      } 
+
+    prevNode->next = nextNode;
+    nextNode->prev = prevNode;
+    delete node;
     return head;
 }
 
@@ -126,37 +144,44 @@ Node* DeleteValue(Node* head, int value)
 {
     if(head == NULL) return NULL;
     Node* node = head;
-    if(head->data == value)
+
+    if(node->data == value && node->prev == nullptr && node->next ==nullptr)
     {
-        node->next->prev = nullptr;
-        return node->next;
+        delete node;
+        return NULL;
     }
-    
+    bool isFound = false;
     while (node)
     {
         if(node->data == value)
         {
-            if(node->next)
-            {
-                node->prev->next = node->next;
-                node->next->prev = node->prev;
-            }
-            else 
-            {
-                node->prev->next = nullptr;
-            }
-            
-            return head;
+            isFound= true;
+            break;
         }
         node = node->next;
     }
+    if(!isFound) return head;
+    Node* prevNode =  node->prev;
+    Node* nextNode = node->next;
+
+    if(prevNode == NULL)
+       return DeleteHead(node);
+
+    if(nextNode == NULL)    
+      {
+        return DeleteTail(head);
+      } 
+
+    prevNode->next = nextNode;
+    nextNode->prev = prevNode;
+    delete node;
     return head;
 }
 
 
 int main()
 {
-    int arr[5] = {1, 2, 3, 4, 5};
+    int arr[5] = {1,2,3,4,5};
     Node *head = ConvertArrToDll(arr, 5);
     Transverse(head);
     
@@ -169,11 +194,11 @@ int main()
     // Transverse(head);
 
     // // 3. Delete at kth index 
-    // head = DeleteKthElement(head, 2);
+    // head = DeleteKthElement(head, 6);
     // Transverse(head);
 
-    // 4. Delete at matched value  
-    head = DeleteValue(head, 6);
+    // // 4. Delete at matched value  
+    head = DeleteValue(head, 1);
     Transverse(head);
 
 }
