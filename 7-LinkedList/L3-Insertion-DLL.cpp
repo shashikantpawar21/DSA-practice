@@ -154,6 +154,18 @@ Node *InsertBeforeKthElement(Node *head, int k, int value)
     return head;
 }
 
+// 4. Insert before node
+//  take prev of node and make it next point to new node
+//  new Node next with node mentioned and prev will be prev of node
+//  node prev will be new Node
+void InsertBeforeNode(Node *node, int value)
+{
+    Node *prev = node->prev;
+    Node *newNode = new Node(value, node, prev);
+    prev->next = newNode;
+    node->prev = newNode;
+}
+
 int main()
 {
     int arr[5] = {1, 2, 3, 4, 5};
@@ -176,10 +188,10 @@ int main()
     // Transverse(head);
 
     // // 3. Insert Before Kth Element
-    head = InsertBeforeKthElement(head, 8, 6);
-    Transverse(head);
-
-    // // 4. Delete at matched value
-    // head = DeleteValue(head, 1);
+    // head = InsertBeforeKthElement(head, 8, 6);
     // Transverse(head);
+
+    // // 4. Insert Before Node which is not head
+    InsertBeforeNode(head->next->next, 8);
+    Transverse(head);
 }

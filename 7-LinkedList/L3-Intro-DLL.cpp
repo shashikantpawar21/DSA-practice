@@ -1,3 +1,6 @@
+// APPLICATION - Doublely Linked List is used in our browser
+//  when we forward the next page and back operation , gng to next to next to next page and come back to any page operation
+
 #include <iostream>
 #include <vector>
 using namespace std;
